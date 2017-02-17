@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  职缺: MyString
+  岗位描述: MyText
+
+two:
+  职缺: MyString
+  岗位描述: MyText
