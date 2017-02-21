@@ -1,5 +1,5 @@
 class JobsController < ApplicationController
-  before_action :authenticate_user! , only: [:new, :create]
+  before_action :authenticate_user! , only: [:new, :create, :edit, :update, :destroy]
   def index
     @jobs = Job.all
   end
@@ -10,6 +10,9 @@ class JobsController < ApplicationController
 
   def edit
     @job = Job.find(params[:id])
+    if current_user != @job.user
+      redirect_to root_path, alert: "You have no permission."
+    end
   end
 
   def new
@@ -30,6 +33,11 @@ class JobsController < ApplicationController
 
   def update
     @job = Job.find(params[:id])
+
+    if current_user != @job.user
+      redirect_to root_path, alert: "You have no permission."
+    end
+
     if @job.update(job_params)
       redirect_to jobs_path, notice: "修改 成功"
     else
@@ -39,6 +47,11 @@ class JobsController < ApplicationController
 
   def destroy
     @job = Job.find(params[:id])
+
+    if current_user != @job.user
+      redirect_to root_path, alert: "You have no permission."
+    end
+
     @job.destroy
     flash[:alert] = "职缺 删除"
     redirect_to jobs_path
