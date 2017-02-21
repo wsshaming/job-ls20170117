@@ -8,6 +8,7 @@
         <td>#</td>
         <td>职缺</td>
         <td>岗位描述</td>
+        <td>Creator </td>
       </tr>
     </thead>
     <tbody>
@@ -16,6 +17,7 @@
           <td>#</td>
           <td><%= link_to(job.职缺, job_path(job)) %></td>
           <td><%= job.岗位描述 %></td>
+          <td> <%= job.user.email %> </td>
           <td>
               <%= link_to("Edit", edit_job_path(job), class: "btn btn-sm btn-default")%>
               <%= link_to("Delete", job_path(job),    class: "btn btn-sm btn-default",
