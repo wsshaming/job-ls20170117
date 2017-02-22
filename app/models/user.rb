@@ -11,7 +11,15 @@ class User < ApplicationRecord
   has_many :job_relationships
   has_many :participated_jobs, :through => :job_relationships, :source => :job
 
-    def is_member_of?(job)
+  def is_member_of?(job)
       participated_jobs.include?(job)
-    end
+  end
+
+  def join!(job)
+      participated_jobs << job
+  end
+
+  def quit!(job)
+      participated_jobs.delete(job)
+  end
 end
