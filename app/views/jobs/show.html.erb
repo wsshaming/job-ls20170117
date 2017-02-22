@@ -1,6 +1,14 @@
 <div class="col-md-12">
   <div class="job">
 
+    <span class="pull-right">
+     <% if current_user && current_user.is_member_of?(@job) %>
+       <label class="label label-success"> 群组成员 </label>
+     <% else %>
+       <label class="label label-warning"> 不是群组成员 </label>
+     <% end %>
+   </span>
+
     <%= link_to("岗位细则", new_job_post_path(@job), class: "btn btn-default pull-right")%>
 
     <% if current_user && current_user == @job.user %>
