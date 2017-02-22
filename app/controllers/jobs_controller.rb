@@ -23,11 +23,12 @@ class JobsController < ApplicationController
 
     if @job.save
 
-    redirect_to jobs_path
-  else
-    render :new
+      current_user.join!(@job)
+      redirect_to jobs_path
+    else
+      render :new
+    end
   end
- end
 
   def update
     if @job.update(job_params)
