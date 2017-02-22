@@ -7,7 +7,7 @@ class JobsController < ApplicationController
 
   def show
     @job = Job.find(params[:id])
-    @posts = @job.posts.recent
+    @posts = @job.posts.recent.paginate(:page => params[:page], :per_page => 5)
   end
 
   def edit
