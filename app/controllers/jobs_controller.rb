@@ -43,6 +43,32 @@ class JobsController < ApplicationController
     redirect_to jobs_path
   end
 
+  def join
+    @job = Job.find(params[:id])
+
+    if !current_user.is_member_of?(@job)
+      current_user.join!(@job)
+      flash[:notice] = "加入本讨论版成功！"
+    else
+      flash[:warning] = "你已经是本讨论版成员了！"
+    end
+
+    redirect_to job_path(@job)
+  end
+
+  def quit
+    @job = Job.find(params[:id])
+
+    if current_user.is_member_of?(@job)
+      current_user.quit!(@job)
+      flash[:alert] = "已退出本讨论版！"
+    else
+      flash[:warning] = "你不是本讨论版成员，怎么退出 "
+    end
+
+    redirect_to job_path(@job)
+  end
+
   private
 
   def find_job_and_check_permission
