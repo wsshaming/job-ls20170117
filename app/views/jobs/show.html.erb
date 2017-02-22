@@ -1,5 +1,9 @@
 <div class="col-md-12">
-  <div class="job"><% if current_user && current_user == @job.user %>
+  <div class="job">
+
+    <%= link_to("岗位细则", new_job_post_path(@job), class: "btn btn-default pull-right")%>
+
+    <% if current_user && current_user == @job.user %>
 
     <%= link_to("Edit", edit_job_path(@job), class: "btn btn-primary pull-right")%>
   <% end %>
