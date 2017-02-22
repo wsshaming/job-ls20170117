@@ -7,7 +7,7 @@ class JobsController < ApplicationController
 
   def show
     @job = Job.find(params[:id])
-    @posts = @job.posts.order("created_at DESC")
+    @posts = @job.posts.recent
   end
 
   def edit
