@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   namespace :account do
     resources :jobs
+    resources :posts
   end
 
   root 'jobs#index'

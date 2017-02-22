@@ -18,9 +18,8 @@
         <tr>
           <td> # </td>
           <td> <%= link_to(job.职缺, job_path(job)) %> </td>
-          <td> <%= job.岗位描述 %> </td>
-          <td> <%= job.posts.count %> </td>
-          <td> <%= job.updated_at %> </td>
+          <td> <%= simple_format(job.岗位描述) %> </td>
+          <td> <%= job.user.email %> </td>
         </tr>
       <% end %>
     </tbody>
