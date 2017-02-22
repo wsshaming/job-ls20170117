@@ -1,0 +1,28 @@
+<div class="col-md-12">
+
+  <h2 class="text-center"> 我加入的讨论版 </h2>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th> # </th>
+        <th> 职缺 </th>
+        <th> 岗位描述 </th>
+        <th> Post Count </th>
+        <th> Last Update </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @jobs.each do |job| %>
+        <tr>
+          <td> # </td>
+          <td> <%= link_to(job.职缺, job_path(job)) %> </td>
+          <td> <%= job.岗位描述 %> </td>
+          <td> <%= job.posts.count %> </td>
+          <td> <%= job.updated_at %> </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
